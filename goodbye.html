@@ -1,0 +1,45 @@
+<html>
+<meta http-equiv= "Content-Type" content="text/html; charset=UTF-8"/>
+<style>
+    .form-wrapper {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+    .final-submit {
+        width: 50%;
+        text-align: center;
+        cursor: pointer;
+        background-color: #36F;
+        padding: 15px 0;
+        color: #FFF;
+        display: inline;
+    }
+
+    .final-submit:hover {
+        background: #33C;
+        transition: .25s;
+        -moz-transition: .25s;
+        -webkit-transition: .25s;
+    }
+
+    .final-submit-disabled {
+        width: 50%;
+        text-align: center;
+        background-color: #3F3F3F;
+        padding: 15px 0;
+        color: #FFF;
+        display: inline;
+    }
+</style>
+
+<div class="form-wrapper">
+            <P><font size = 4 color = "blue"><center> Thank you for using our System </center></font></P>
+            
+            <P><font size = 4 color = "blue"><center> Wish You A Good Day! </center></font></P>
+            <p><center><button id="final-submit" class="final-submit" type="button" onclick="goBack();"> Thanks for join us！</button><center></p>
+<script>
+    function goBack() {
+         window.location.href = "/index.html";
+    }
+</script>
+</html>

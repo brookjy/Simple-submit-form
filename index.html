@@ -1,0 +1,194 @@
+<html>
+<meta http-equiv= "Content-Type" content="text/html; charset=UTF-8"/>
+<style>
+    body{
+        background-color: lightblue;
+    }
+    @charset "utf-8";
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    img {
+        float: left;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .form-wrapper {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    .form-header {
+        max-width: 1024px;
+        max-height: 2000px;
+        margin: 0 auto;
+        background-color: purple;
+    }
+
+    input {
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+
+    .application-form {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        color: #303030;
+    }
+
+    .application-form .inputTextBox {
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .application-form .smallTextBox {
+        width: 32.8%;
+        padding: 5px 0;
+    }
+
+    .application-form select {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    #review-div {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .final-submit {
+        width: 50%;
+        text-align: center;
+        cursor: pointer;
+        background-color: #36F;
+        padding: 15px 0;
+        color: #FFF;
+        display: inline;
+    }
+
+    .final-submit:hover {
+        background: #33C;
+        transition: .25s;
+        -moz-transition: .25s;
+        -webkit-transition: .25s;
+    }
+
+    .final-submit-disabled {
+        width: 50%;
+        text-align: center;
+        background-color: #3F3F3F;
+        padding: 15px 0;
+        color: #FFF;
+        display: inline;
+    }
+
+
+
+</style>
+<body>
+ <img src = "govermt.jpg" width = "1024" height = "200">
+ <div class="form-header">
+    <P> <font size = 6 color = "blue"><center> VICTORIA STUDENT DATABASE SYSTEM </center></font></P>
+</div>  
+<div class="form-wrapper">
+    <form id="application-form" class="application-form" action="" method="get">
+        <p><label>姓(汉语拼音): </label><input name="lastName" type="text" id="lastName" class="inputTextBox" required autofocus /></p>
+        <p><label>名(汉语拼音): </label><input name="firstName" type="text" id="firstName" class="inputTextBox" required /></p>
+        <p><label class="oneLineDisplay">性别: </label><input name="gender" type="radio" id="gender" class="oneLineDisplay" value="male" required checked /> 男  <input name="gender" type="radio" id="gender" class="oneLineDisplay" value="female" required /> 女  </p>
+        <p><label>专业: </label><input name="major" type="maj" id="major" class="inputTextBox" required /></p>
+        <p><label>联系电话: </label><input name="phoneNumber" type="tel" id="phoneNumber" class="inputTextBox" required /></p>
+        <p><label>E-Mail: </label><input name="emailAddress" type="email" id="emailAddress" class="inputTextBox" required placeholder="name@domain.com" /></p>
+        <p><label>出生日期: </label><input name="birthday" type="date" id="birthday" class="inputTextBox" required max="1997-01-01" /></p>
+        <p><label>家庭地址: </label><input name="streetAddress" type="text" id="streetAddress" class="inputTextBox" required placeholder="Street" /> <input name="cityAddress" type="text" id="cityAddress" class="smallTextBox" required placeholder="City" /> <input name="provinceAddress" type="text" id="provinceAddress" class="smallTextBox" required placeholder="Province" /> <input name="postalCode" type="text" id="postalCode" class="smallTextBox" required placeholder="Postal Code" /></p>
+        <br />
+        <p style="color: #ED4337;"><input name="disclaimerCheckBox" type="checkbox" id="disclaimerCheckBox" class="disclaimerCheckBox" value="disclaimer"> I have read the terms！</p>
+        <br />
+        <!--<p>请仔细填写以上信息，之后我们会对所有填写信息的同学进行抽奖活动，幸运的朋友会获得$15的iTunes 购物卡一张，并会以邮寄的方式寄出。</p>-->
+        <br />
+        <p><label><center>感谢大家的支持！</center></label></p>
+</div>
+<div class= "application-form">
+  <p><center><button id="final-submit" class="final-submit" type="button" onclick="finalSubmit();"> Submit</button><center></p>
+</div>  
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    function finalSubmit() {
+        alert("Debug!!!!!!!!-------!");
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var genderAll = document.getElementsByName('gender');
+        for (var i = 0, length = genderAll.length; i < length; i++) {
+            if (genderAll[i].checked) {
+                var gender = genderAll[i].value;
+                var genderT = genderAll[i].nextSibling.data;
+            }
+        }
+        var major = document.getElementById('major').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var emailAddress = document.getElementById('emailAddress').value;
+        var birthday = document.getElementById('birthday').value;
+        var streetAddress = document.getElementById('streetAddress').value;
+        var cityAddress = document.getElementById('cityAddress').value;
+        var provinceAddress = document.getElementById('provinceAddress').value;
+        var postalCode = document.getElementById('postalCode').value;
+        var disclaimer = document.getElementById('disclaimerCheckBox');
+
+        if (disclaimer.checked && firstName != "" && lastName != "" && gender != "" && major != "" && phoneNumber != "" && emailAddress != "" && birthday != "" && streetAddress != "" && cityAddress != "" && provinceAddress != "" && postalCode != "") {    
+            var customVar = firstName + ";" + lastName + ";" + gender + ";" + major + ";" + phoneNumber + ";" + emailAddress + ";" + birthday + ";" + streetAddress + ";" + provinceAddress + ";" + cityAddress + ";" + postalCode;
+          
+            var all_data = [lastName, firstName, gender, major, phoneNumber, emailAddress, birthday, streetAddress, cityAddress, provinceAddress, postalCode];
+            alert(firstName);
+
+            jQuery.post( "http://www.vstudentliving.com/documentSave.php", { first: firstName, last: lastName, gender: gender, major: major, phone: phoneNumber, email: emailAddress, birthday: birthday, street: streetAddress, city: cityAddress, province: provinceAddress, post: postalCode}, function() {});
+            
+           
+            /*var jqxhr = jQuery.post( "http://www.vstudentliving.com/documentSave.php", { dataArray: all_data },function(data,status)  {
+                alert( "success" );
+            })
+                .done(function() {
+                    alert( "second success" );
+            })
+                .fail(function() {
+                    alert( "error" + error);
+            })
+                .always(function() {
+                    alert( "finished" );
+            });  */
+            alert("Success!");
+            //window.location.href = "http://www.vstudentliving.com/goodbye.html";
+            
+        }
+        else{
+            alert("Please fill in all the blanks, I am not stupid!");
+        }
+        /*var jqxhr = jQuery.post( "http://www.vstudentliving.com/documentSave.php", function(data,status)  {
+                alert( "success" );
+            })
+                .done(function() {
+                    alert( "second success" );
+            })
+                .fail(function() {
+                    alert( "error" + error);
+            })
+                .always(function() {
+                    alert( "finished" );
+            }); 
+        var details = ["aasa","bbbbb"];
+        
+        //$.post("documentSave.php", { dataArray: details }, function (data) { });
+        */
+     }   
+        
+    
+</script>
+
+</html>
